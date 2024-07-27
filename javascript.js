@@ -21,9 +21,9 @@ function playGame() {
     };
 
     if (humanScore > computerScore) {
-        console.log(`Game Ends! You win with a score of ${huamnScore}-${computerScore}!!!`);
+        console.log(`Game Ends! You win with a score of ${humanScore}-${computerScore}!!!`);
     } else {
-        console.log(`Game Ends! You lose with a score of ${huamnScore}-${computerScore}!!!`);
+        console.log(`Game Ends! You lose with a score of ${humanScore}-${computerScore}!!!`);
     };
 };
 
@@ -55,3 +55,5 @@ function getHumanChoice() {
     const choice = prompt("Rock, Paper or Scissors?").toLowerCase();
     return choice;
 };
+
+playGame();
