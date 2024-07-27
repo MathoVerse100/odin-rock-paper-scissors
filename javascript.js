@@ -1,9 +1,8 @@
 function playGame() {
-    let i = 0;
     let humanScore = 0;
     let computerScore = 0;
 
-    while (humanScore === 5 || computerScore === 5) {
+    while (humanScore < 5 && computerScore < 5) {
         let computerChoice = getComputerChoice();
         let humanChoice = getHumanChoice();
 
@@ -12,11 +11,9 @@ function playGame() {
         if (roundResult === "win") {
             humanScore++;
             console.log(`You vs Computer: ${humanScore}-${computerScore}`);
-            i++;
         } else if (roundResult === "lose") {
             computerScore++;
             console.log(`You vs Computer: ${humanScore}-${computerScore}`);
-            i++;
         };
     };
 
