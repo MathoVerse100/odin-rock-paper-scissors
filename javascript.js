@@ -65,4 +65,4 @@ function getHumanChoice() {
 };
 
 
-playGame();
+document.getElementById("startGame").onclick = playGame;
