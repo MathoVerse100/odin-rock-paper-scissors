@@ -5,7 +5,7 @@ function playGame() {
 
     while (i < 5) {
         let computerChoice = getComputerChoice();
-        let huamnChoice = getHumanChoice();
+        let humanChoice = getHumanChoice();
 
         let roundResult = playRound(humanChoice, computerChoice);
 
@@ -55,4 +55,3 @@ function getHumanChoice() {
     const choice = prompt("Rock, Paper or Scissors?").toLowerCase();
     return choice;
 };
-
