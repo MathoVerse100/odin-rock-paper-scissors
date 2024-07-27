@@ -1,12 +1,30 @@
-function getComputerChoice() {
-    let choices = ["rock", "paper", "scissors"];
-    let choice = Math.floor(Math.random() * 3);
-    return choices[choice];
-};
+function playGame() {
+    let i = 0;
+    let humanScore = 0;
+    let computerScore = 0;
 
-function getHumanChoice() {
-    let choice = prompt("Rock, Paper or Scissors?").toLowerCase();
-    return choice;
+    while (i < 5) {
+        let computerChoice = getComputerChoice();
+        let huamnChoice = getHumanChoice();
+
+        let roundResult = playRound(humanChoice, computerChoice);
+
+        if (roundResult === "win") {
+            humanScore++;
+            console.log(`You vs Computer: ${humanScore}-${computerScore}`);
+            i++;
+        } else if (roundResult === "lose") {
+            computerScore++;
+            console.log(`You vs Computer: ${humanScore}-${computerScore}`);
+            i++;
+        };
+    };
+
+    if (humanScore > computerScore) {
+        console.log(`Game Ends! You win with a score of ${huamnScore}-${computerScore}!!!`);
+    } else {
+        console.log(`Game Ends! You lose with a score of ${huamnScore}-${computerScore}!!!`);
+    };
 };
 
 
@@ -24,3 +42,17 @@ function playRound(humanChoice, computerChoice) {
         return "lose";
     };
 };
+
+
+function getComputerChoice() {
+    const choices = ["rock", "paper", "scissors"];
+    const choice = Math.floor(Math.random() * 3);
+    return choices[choice];
+};
+
+
+function getHumanChoice() {
+    const choice = prompt("Rock, Paper or Scissors?").toLowerCase();
+    return choice;
+};
+
