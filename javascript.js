@@ -49,8 +49,20 @@ function getComputerChoice() {
 
 
 function getHumanChoice() {
-    const choice = prompt("Rock, Paper or Scissors?").toLowerCase();
+    const choices = ["rock", "paper", "scissors"];
+    let choice = null;
+
+    while (true) {
+        choice = prompt("Rock, Paper or Scissors?").toLowerCase();
+        if (choices.includes(choice)) {
+            break;
+        } else {
+            alert("Invalid choice. Please retry...");
+        };
+    };
+
     return choice;
 };
+
 
 playGame();
