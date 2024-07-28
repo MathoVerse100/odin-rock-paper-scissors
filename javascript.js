@@ -2,14 +2,11 @@ function playRound(humanChoice, computerChoice) {
     let winConditions = ["rock > scissors", "scissors > paper", "paper > rock"];
 
     if (humanChoice === computerChoice) {
-        console.log("Draw! The round is still on...");
-        return "draw";
-    } else if (winConditions.includes(`${humanChoice} > ${computerChoice}`)) {
-        console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
-        return "win";
+        return ["Draw! The round is still on...", "draw"];
+    } else if (winConditions.includes(`${capitalize(humanChoice)} > ${capitalize(computerChoice)}`)) {
+        return [`You win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}.`, "win"];
     } else {
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
-        return "lose";
+        return [`You lose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}.`, "lose"];
     };
 };
 
