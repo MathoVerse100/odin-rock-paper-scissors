@@ -48,23 +48,6 @@ function getComputerChoice() {
 };
 
 
-function getHumanChoice() {
-    const choices = ["rock", "paper", "scissors"];
-    let choice = null;
-
-    while (true) {
-        choice = prompt("Rock, Paper or Scissors?").toLowerCase();
-        if (choices.includes(choice)) {
-            break;
-        } else {
-            alert("Invalid choice. Please retry...");
-        };
-    };
-
-    return choice;
-};
-
-
 function createGameBoard() {    
     const separator1 = document.createElement("p");
     const gamePlace = document.createElement("div");
