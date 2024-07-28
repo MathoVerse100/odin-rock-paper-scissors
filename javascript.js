@@ -48,7 +48,7 @@ function getComputerChoice() {
 };
 
 
-function createGameBoard() {    
+function createGameBoard() { 
     const separator1 = document.createElement("p");
     const gamePlace = document.createElement("div");
     const separator2 = document.createElement("p");
@@ -125,3 +125,27 @@ function createGameBoard() {
 
 
 const startGame = document.querySelector(".startGame");
+let gameStarted = false;
+
+startGame.addEventListener("click", () => {
+
+    if (gameStarted) {
+        return;
+    } else {
+        gameStarted = true;
+
+        const elements = createGameBoard();
+
+        elements["buttons"].addEventListener("click", (event) => {
+            
+        });
+
+        elements["endGame"].addEventListener("click", () => {
+            Object.keys(elements).slice(0, 4).forEach((element) => {
+                document.body.removeChild(elements[element]);
+            });
+            
+            gameStarted = false;
+        });
+    };
+});
