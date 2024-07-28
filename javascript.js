@@ -1,30 +1,3 @@
-function playGame() {
-    let humanScore = 0;
-    let computerScore = 0;
-
-    while (humanScore < 5 && computerScore < 5) {
-        let computerChoice = getComputerChoice();
-        let humanChoice = getHumanChoice();
-
-        let roundResult = playRound(humanChoice, computerChoice);
-
-        if (roundResult === "win") {
-            humanScore++;
-            console.log(`You vs Computer: ${humanScore}-${computerScore}`);
-        } else if (roundResult === "lose") {
-            computerScore++;
-            console.log(`You vs Computer: ${humanScore}-${computerScore}`);
-        };
-    };
-
-    if (humanScore > computerScore) {
-        console.log(`Game Ends! You win with a score of ${humanScore}-${computerScore}!!!`);
-    } else {
-        console.log(`Game Ends! You lose with a score of ${humanScore}-${computerScore}!!!`);
-    };
-};
-
-
 function playRound(humanChoice, computerChoice) {
     let winConditions = ["rock > scissors", "scissors > paper", "paper > rock"];
 
@@ -124,6 +97,11 @@ function createGameBoard() {
 };
 
 
+function capitalize(string_) {
+    return string_.charAt(0).toUpperCase() + string_.slice(1);
+};
+
+
 const startGame = document.querySelector(".startGame");
 let gameStarted = false;
 
@@ -135,9 +113,48 @@ startGame.addEventListener("click", () => {
         gameStarted = true;
 
         const elements = createGameBoard();
+        let roundNumber = 0;
+        let humanScore = 0;
+        let computerScore = 0;
 
         elements["buttons"].addEventListener("click", (event) => {
-            
+            if (humanScore === 5 || computerScore === 5) {
+                elements["resultBroadcast"].textContent = `Game Ends! You win with a score of ${humanScore}-${computerScore}!!!`;
+                elements["resultBroadcast"].style.color = "red";
+
+                elements["endGame"].textContent = "Play Again";
+                return;
+            } else {
+                let target = event.target;
+                let computerChoice = getComputerChoice();
+                let humanChoice;
+    
+                let score = {"win": [1, 0], "lose": [0, 1], "draw": [0, 0]};
+    
+                switch (target.classList[0]) {
+                    case "rock":
+                        humanChoice = "rock";
+                    case "paper":
+                        humanChoice = "paper";
+                    case "scissors":
+                        humanChoice = "scissors";
+                };
+    
+                roundResult = playRound(humanChoice, computerChoice);
+                humanScore += score[roundResult[1]][0];
+                computerScore += score[roundResult[1]][1];
+                if (roundResult[1] !== "draw") {
+                    roundNumber += 1
+                };
+
+                if (roundNumber > 0) {
+                    elements["roundNumber"].textContent = `Round ${roundNumber}`;
+                };
+
+                elements["resultBroadcast"].textContent = roundResult[0];
+                elements["humanScore"].textContent = `Your Score: ${humanScore}`;
+                elements["computerScore"].textContent = `Computer Score: ${computerScore}`;
+            };
         });
 
         elements["endGame"].addEventListener("click", () => {
