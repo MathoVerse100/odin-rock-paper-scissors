@@ -3,7 +3,7 @@ function playRound(humanChoice, computerChoice) {
 
     if (humanChoice === computerChoice) {
         return ["Draw! The round is still on...", "draw"];
-    } else if (winConditions.includes(`${capitalize(humanChoice)} > ${capitalize(computerChoice)}`)) {
+    } else if (winConditions.includes(`${humanChoice} > ${computerChoice}`)) {
         return [`You win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}.`, "win"];
     } else {
         return [`You lose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}.`, "lose"];
